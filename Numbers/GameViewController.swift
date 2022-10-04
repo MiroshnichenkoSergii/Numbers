@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var newGameButton: UIButton!
     
-    lazy var game = GameModel(count: buttons.count, time: 30) { [weak self] (status, time) in
+    lazy var game = GameModel(count: buttons.count, time: 10) { [weak self] (status, time) in
         self?.timerLabel.text = time.secondsToString()
         self?.updateInfoGame(with: status)
     }
@@ -40,7 +40,8 @@ class GameViewController: UIViewController {
     func setupScreen() {
         for index in game.items.indices {
             buttons[index].setTitle(game.items[index].title, for: .normal)
-            buttons[index].isHidden = false
+            buttons[index].alpha = 1
+            buttons[index].isEnabled = true
         }
         
         nextDigit.text = game.nextItem?.title
@@ -48,7 +49,9 @@ class GameViewController: UIViewController {
     
     private func updateUI() {
         for index in game.items.indices {
-            buttons[index].isHidden = game.items[index].isFound
+            buttons[index].alpha = game.items[index].isFound ? 0 : 1
+            buttons[index].isEnabled = !game.items[index].isFound
+            
             if game.items[index].isError {
                 UIView.animate(withDuration: 0.3) { [weak self] in
                     self?.buttons[index].backgroundColor = .red
