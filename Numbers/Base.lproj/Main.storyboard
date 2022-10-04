@@ -229,16 +229,25 @@
                                     <action selector="pressButton:" destination="5Dj-ll-qHg" eventType="touchUpInside" id="kcM-c3-32Q"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMZ-wv-MXR">
+                                <rect key="frame" x="201" y="100.5" width="12.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="efr-Cc-h7U"/>
                         <color key="backgroundColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="nMZ-wv-MXR" firstAttribute="centerX" secondItem="efr-Cc-h7U" secondAttribute="centerX" id="fak-1S-Xw5"/>
+                            <constraint firstItem="nMZ-wv-MXR" firstAttribute="top" secondItem="emC-6y-OgQ" secondAttribute="bottom" constant="20" id="gdr-tU-RRZ"/>
                             <constraint firstItem="emC-6y-OgQ" firstAttribute="top" secondItem="efr-Cc-h7U" secondAttribute="top" constant="10" id="qDC-1Q-69G"/>
                             <constraint firstItem="emC-6y-OgQ" firstAttribute="centerX" secondItem="efr-Cc-h7U" secondAttribute="centerX" id="tM5-0T-tZM"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="gameStatusLabel" destination="emC-6y-OgQ" id="5jq-ID-ybW"/>
+                        <outlet property="nextDigit" destination="nMZ-wv-MXR" id="AOK-5u-6cN"/>
                         <outletCollection property="buttons" destination="Vry-F4-vEQ" collectionClass="NSMutableArray" id="k3C-0b-3eD"/>
                         <outletCollection property="buttons" destination="5ED-dW-434" collectionClass="NSMutableArray" id="Nvl-eX-Pak"/>
                         <outletCollection property="buttons" destination="ude-3W-ubA" collectionClass="NSMutableArray" id="IGr-iC-iNF"/>

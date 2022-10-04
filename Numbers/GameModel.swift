@@ -6,14 +6,23 @@
 //
 
 import Foundation
+import UIKit
+
+enum StatusGame {
+    case start
+    case win
+}
 
 class GameModel {
+    var items = [Item]()
+    var nextItem: Item?
+    var statusGame: StatusGame = .start
     private let data = Array(1...99)
-    private var items = [Item]()
     private var countItems: Int
     
     init(count: Int) {
         self.countItems = count
+        setupGame()
     }
     
     func setupGame() {
@@ -23,6 +32,21 @@ class GameModel {
             let item = Item(title: String(digits.removeFirst()))
             items.append(item)
         }
+        
+        nextItem = items.shuffled().first
+    }
+    
+    func check(index: Int) {
+        if items[index].title == nextItem?.title {
+            items[index].isFound = true
+            nextItem = items.shuffled().first(where: { (item) -> Bool in
+                item.isFound == false
+            })
+        }
+        
+        if nextItem == nil {
+            statusGame = .win
+        }
     }
 }
 
@@ -30,3 +54,4 @@ struct Item {
     var title: String
     var isFound: Bool = false
 }
+
