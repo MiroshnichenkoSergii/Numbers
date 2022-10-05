@@ -23,9 +23,20 @@ struct Item {
 class GameModel {
     var items = [Item]()
     var nextItem: Item?
+    
+    var isNewRecord = false
+    
     var status: StatusGame = .start {
         didSet {
             if status != .start {
+                if status == .win {
+                    let newRecord = timeForGame - secondsGame
+                    let record = UserDefaults.standard.integer(forKey: KeysUserDefaults.recordGame)
+                    if record == 0 || newRecord < record {
+                        UserDefaults.standard.set(newRecord, forKey: KeysUserDefaults.recordGame)
+                        isNewRecord = true
+                    }
+                }
                 stopGame()
             }
         }
@@ -44,15 +55,16 @@ class GameModel {
     private var timer: Timer?
     private var updateTimer: ((StatusGame, Int) -> Void)
     
-    init(count: Int, time: Int, updateTimer: @escaping (_ status: StatusGame, _ seconds: Int) -> Void) {
+    init(count: Int, updateTimer: @escaping (_ status: StatusGame, _ seconds: Int) -> Void) {
         self.countItems = count
-        self.secondsGame = time
         self.updateTimer = updateTimer
-        self.timeForGame = time
+        self.timeForGame = Settings.shared.currentSettins.timeForGame
+        self.secondsGame = self.timeForGame
         setupGame()
     }
     
     func setupGame() {
+        isNewRecord = false
         var digits = data.shuffled()
         
         items.removeAll()
@@ -66,7 +78,10 @@ class GameModel {
         
         updateTimer(status, secondsGame)
         
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (_) in self?.secondsGame -= 1 })
+        if Settings.shared.currentSettins.timerState {
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (_) in self?.secondsGame -= 1
+            })
+        }
     }
     
     func check(index: Int) {
@@ -92,7 +107,7 @@ class GameModel {
         setupGame()
     }
     
-    private func stopGame() {
+    func stopGame() {
         timer?.invalidate()
     }
 }

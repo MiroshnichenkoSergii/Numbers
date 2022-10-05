@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var newGameButton: UIButton!
     
-    lazy var game = GameModel(count: buttons.count, time: 10) { [weak self] (status, time) in
+    lazy var game = GameModel(count: buttons.count) { [weak self] (status, time) in
         self?.timerLabel.text = time.secondsToString()
         self?.updateInfoGame(with: status)
     }
@@ -23,6 +23,12 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         setupScreen()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        game.stopGame()
     }
     
     @IBAction func pressButton(_ sender: UIButton) {
@@ -77,10 +83,52 @@ class GameViewController: UIViewController {
                 gameStatusLabel.text = "You WIN!"
                 gameStatusLabel.textColor = .green
                 newGameButton.isHidden = false
+                if game.isNewRecord {
+                    showAlert()
+                } else {
+                    showAlertActionSheet()
+                }
             case .lose:
                 gameStatusLabel.text = "Game Over"
                 gameStatusLabel.textColor = .red
                 newGameButton.isHidden = false
+                showAlertActionSheet()
         }
+    }
+    
+    private func showAlert() {
+        let ac = UIAlertController(title: "Congratulations!", message: "You set the new record!", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(ac, animated: true)
+    }
+    
+    private func showAlertActionSheet() {
+        let ac = UIAlertController(title: "What you want next?", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Start new game", style: .default){ [weak self] _ in
+            self?.game.newGame()
+            self?.setupScreen()
+        })
+        ac.addAction(UIAlertAction(title: "Show record", style: .default) { _ in
+            // TODO: - record view controller
+        })
+        ac.addAction(UIAlertAction(title: "Go to menu", style: .destructive) { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        })
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        if let popover = ac.popoverPresentationController {
+            
+            // - arrow direction to status label
+            popover.sourceView = gameStatusLabel
+            popover.permittedArrowDirections = UIPopoverArrowDirection.up
+            
+            // - to show alert in the midle of screen
+//            popover.sourceView = self.view
+//            popover.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+//            popover.permittedArrowDirections = UIPopoverArrowDirection.init(rawValue: 0)
+        }
+        
+        present(ac, animated: true)
     }
 }

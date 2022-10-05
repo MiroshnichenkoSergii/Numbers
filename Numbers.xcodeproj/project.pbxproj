@@ -14,6 +14,9 @@
 		EFA0D86028EAE46D00D0E49B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA0D85E28EAE46D00D0E49B /* LaunchScreen.storyboard */; };
 		EFA0D86828EAF40400D0E49B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA0D86728EAF40400D0E49B /* GameViewController.swift */; };
 		EFA0D86A28EAFB2600D0E49B /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA0D86928EAFB2600D0E49B /* GameModel.swift */; };
+		EFA0D86C28EC6F6000D0E49B /* SelectTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA0D86B28EC6F6000D0E49B /* SelectTimeViewController.swift */; };
+		EFA0D86E28EC707E00D0E49B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA0D86D28EC707E00D0E49B /* SettingsTableViewController.swift */; };
+		EFA0D87028EC7A6200D0E49B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA0D86F28EC7A6200D0E49B /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		EFA0D86128EAE46D00D0E49B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFA0D86728EAF40400D0E49B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EFA0D86928EAFB2600D0E49B /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		EFA0D86B28EC6F6000D0E49B /* SelectTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimeViewController.swift; sourceTree = "<group>"; };
+		EFA0D86D28EC707E00D0E49B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		EFA0D86F28EC7A6200D0E49B /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 				EFA0D85328EAE46A00D0E49B /* AppDelegate.swift */,
 				EFA0D85528EAE46A00D0E49B /* SceneDelegate.swift */,
 				EFA0D85928EAE46A00D0E49B /* Main.storyboard */,
+				EFA0D86D28EC707E00D0E49B /* SettingsTableViewController.swift */,
+				EFA0D86B28EC6F6000D0E49B /* SelectTimeViewController.swift */,
+				EFA0D86F28EC7A6200D0E49B /* Settings.swift */,
 				EFA0D86728EAF40400D0E49B /* GameViewController.swift */,
 				EFA0D86928EAFB2600D0E49B /* GameModel.swift */,
 				EFA0D85C28EAE46D00D0E49B /* Assets.xcassets */,
@@ -142,7 +151,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA0D85428EAE46A00D0E49B /* AppDelegate.swift in Sources */,
+				EFA0D86C28EC6F6000D0E49B /* SelectTimeViewController.swift in Sources */,
+				EFA0D86E28EC707E00D0E49B /* SettingsTableViewController.swift in Sources */,
 				EFA0D86A28EAFB2600D0E49B /* GameModel.swift in Sources */,
+				EFA0D87028EC7A6200D0E49B /* Settings.swift in Sources */,
 				EFA0D86828EAF40400D0E49B /* GameViewController.swift in Sources */,
 				EFA0D85628EAE46A00D0E49B /* SceneDelegate.swift in Sources */,
 			);
