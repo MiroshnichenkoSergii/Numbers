@@ -109,8 +109,8 @@ class GameViewController: UIViewController {
             self?.game.newGame()
             self?.setupScreen()
         })
-        ac.addAction(UIAlertAction(title: "Show record", style: .default) { _ in
-            // TODO: - record view controller
+        ac.addAction(UIAlertAction(title: "Show record", style: .default) { [weak self] _ in
+            self?.performSegue(withIdentifier: "recordVC", sender: nil)
         })
         ac.addAction(UIAlertAction(title: "Go to menu", style: .destructive) { [weak self] _ in
             self?.navigationController?.popViewController(animated: true)

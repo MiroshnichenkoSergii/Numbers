@@ -205,7 +205,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Record"/>
                                         <connections>
-                                            <segue destination="OBk-av-ARa" kind="show" id="5Sb-4c-ifG"/>
+                                            <segue destination="oNy-wL-v3G" kind="presentation" id="5Sb-4c-ifG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -227,18 +227,39 @@
         <!--Record-->
         <scene sceneID="GbY-IR-jmf">
             <objects>
-                <viewController id="OBk-av-ARa" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="OBk-av-ARa" customClass="RecordViewController" customModule="Numbers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NA2-bc-fh0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lb3-Yn-sjj">
+                                <rect key="frame" x="176" y="459" width="62" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="NAX-JQ-z9R"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lb3-Yn-sjj" firstAttribute="centerY" secondItem="NAX-JQ-z9R" secondAttribute="centerY" id="G4R-0y-TXi"/>
+                            <constraint firstItem="Lb3-Yn-sjj" firstAttribute="centerX" secondItem="NAX-JQ-z9R" secondAttribute="centerX" id="zHR-mU-EyZ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Record" id="033-Et-zbC"/>
+                    <navigationItem key="navigationItem" title="Record" id="033-Et-zbC">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Kej-nC-wOD">
+                            <connections>
+                                <action selector="cancel:" destination="OBk-av-ARa" id="lXa-tp-bve"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="recordLabel" destination="Lb3-Yn-sjj" id="an6-F0-7Lc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1oc-Ms-DyP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="180" y="799"/>
+            <point key="canvasLocation" x="180" y="1513"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="JM2-KE-37Q">
@@ -532,6 +553,7 @@
                         <outletCollection property="buttons" destination="ptb-lh-2I7" collectionClass="NSMutableArray" id="r8r-R3-xTH"/>
                         <outletCollection property="buttons" destination="ltJ-Dt-zEJ" collectionClass="NSMutableArray" id="uGa-UR-4Ai"/>
                         <outletCollection property="buttons" destination="vJF-Ss-HHP" collectionClass="NSMutableArray" id="epN-2L-sxw"/>
+                        <segue destination="oNy-wL-v3G" kind="presentation" identifier="recordVC" modalPresentationStyle="fullScreen" id="mPb-Ds-U9b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bg9-gm-LUY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -556,7 +578,28 @@
             </objects>
             <point key="canvasLocation" x="-730.43478260869574" y="71.651785714285708"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9ws-10-hNe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oNy-wL-v3G" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mGX-Em-cNL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OBk-av-ARa" kind="relationship" relationship="rootViewController" id="itJ-Rx-eSk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dLm-3R-mhG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="179.71014492753625" y="798.88392857142856"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="mPb-Ds-U9b"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
