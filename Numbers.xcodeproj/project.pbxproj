@@ -47,6 +47,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF00CA4728F4076300F67033 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EFA0D87128ED829300D0E49B /* RecordViewController.swift */,
+				EFA0D86D28EC707E00D0E49B /* SettingsTableViewController.swift */,
+				EFA0D86B28EC6F6000D0E49B /* SelectTimeViewController.swift */,
+				EFA0D86728EAF40400D0E49B /* GameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EF00CA4828F4078900F67033 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EFA0D86F28EC7A6200D0E49B /* Settings.swift */,
+				EFA0D86928EAFB2600D0E49B /* GameModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EF00CA4928F4079B00F67033 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EFA0D85928EAE46A00D0E49B /* Main.storyboard */,
+				EFA0D85E28EAE46D00D0E49B /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		EFA0D84728EAE46A00D0E49B = {
 			isa = PBXGroup;
 			children = (
@@ -68,15 +97,10 @@
 			children = (
 				EFA0D85328EAE46A00D0E49B /* AppDelegate.swift */,
 				EFA0D85528EAE46A00D0E49B /* SceneDelegate.swift */,
-				EFA0D85928EAE46A00D0E49B /* Main.storyboard */,
-				EFA0D87128ED829300D0E49B /* RecordViewController.swift */,
-				EFA0D86D28EC707E00D0E49B /* SettingsTableViewController.swift */,
-				EFA0D86B28EC6F6000D0E49B /* SelectTimeViewController.swift */,
-				EFA0D86F28EC7A6200D0E49B /* Settings.swift */,
-				EFA0D86728EAF40400D0E49B /* GameViewController.swift */,
-				EFA0D86928EAFB2600D0E49B /* GameModel.swift */,
+				EF00CA4928F4079B00F67033 /* View */,
+				EF00CA4728F4076300F67033 /* Controller */,
+				EF00CA4828F4078900F67033 /* Model */,
 				EFA0D85C28EAE46D00D0E49B /* Assets.xcassets */,
-				EFA0D85E28EAE46D00D0E49B /* LaunchScreen.storyboard */,
 				EFA0D86128EAE46D00D0E49B /* Info.plist */,
 			);
 			path = Numbers;
